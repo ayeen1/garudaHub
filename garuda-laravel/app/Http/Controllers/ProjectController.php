@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProjectRequest;
+use App\Models\Category;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -35,5 +37,21 @@ class ProjectController extends Controller
         ]);
 
         return view('projects.show', compact('project'));
+    }
+
+
+    public function create()
+    {
+        $categories = Category::orderBy('name')->get();
+
+        return view('projects.create', compact('categories'));
+    }
+
+    public function store(StoreProjectRequest $request)
+    {
+        $project = $request->user()->projects()->create($request->validated());
+
+        return redirect()->route('projects.show', $project)
+            ->with('ok', 'Proyek berhasil dipasang.');
     }
 }

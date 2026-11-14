@@ -13,6 +13,9 @@
             <nav aria-label="Navigasi utama">
                 <a href="{{ route('projects.index') }}">Proyek</a>
                 @auth
+                    @if (auth()->user()->role === 'client')
+                    <a href="{{ route('projects.create') }}">Pasang Proyek</a>
+                    @endif
                     <span>{{ auth()->user()->name }} ({{ auth()->user()->role }})</span>
                     <form class="inline" method="POST" action="{{ route('logout') }}">
                     @csrf
