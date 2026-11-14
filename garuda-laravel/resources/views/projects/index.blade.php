@@ -21,7 +21,7 @@
 @forelse ($projects as $p)
     <article class="card">
         <h2>
-            {{ $p->title }}
+            <a href="{{ route('projects.show', $p) }}">{{ $p->title }}</a>
             <span class="badge {{ $p->isOpen() ? 'open' : 'closed' }}">{{ $p->statusLabel() }}</span>
         </h2>
         <p class="muted">

@@ -24,4 +24,16 @@ class ProjectController extends Controller
 
         return view('projects.index', compact('projects', 'cari'));
     }
+
+    public function show(Project $project)
+    {
+        $project->load([
+            'client',
+            'category',
+            'winningBid.developer',
+            'bids' => fn ($q) => $q->with('developer')->orderBy('price'),
+        ]);
+
+        return view('projects.show', compact('project'));
+    }
 }

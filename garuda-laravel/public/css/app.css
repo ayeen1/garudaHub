@@ -1,0 +1,259 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, "Segoe UI", Arial, sans-serif;
+    background: #f4f6f8;
+    color: #1f2933;
+    line-height: 1.5;
+}
+
+a {
+    color: #0b5cad;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin: 0 0 14px;
+}
+
+h2 {
+    font-size: 1.15rem;
+    margin: 0 0 10px;
+}
+
+/* ---------- 2. Kerangka halaman (header, nav, main, footer) ---------- */
+header {
+    background: #7a1020;
+    color: #fff;
+}
+
+header .in {
+    max-width: 1000px;
+    margin: auto;
+    padding: 12px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+}
+
+header a {
+    color: #fff;
+}
+
+header .brand {
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-right: auto;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+}
+
+main {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 16px;
+}
+
+footer {
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.85rem;
+    margin: 30px 0;
+}
+
+/* ---------- 3. Kartu ---------- */
+.card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------- 4. Form ---------- */
+label {
+    display: block;
+    margin: 10px 0 4px;
+    font-weight: 600;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #c5ccd3;
+    border-radius: 6px;
+    font: inherit;
+}
+
+textarea {
+    min-height: 110px;
+}
+
+form.inline {
+    display: inline;
+}
+
+form.inline select {
+    width: auto;
+    padding: 3px;
+}
+
+.search {
+    display: flex;
+    gap: 8px;
+}
+
+.search input {
+    flex: 1;
+}
+
+.search button {
+    flex: none;
+}
+
+/* ---------- 5. Tombol ---------- */
+.btn,
+button {
+    display: inline-block;
+    background: #7a1020;
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font: inherit;
+    cursor: pointer;
+}
+
+.btn:hover {
+    text-decoration: none;
+    opacity: 0.9;
+}
+
+.btn.sec,
+button.sec {
+    background: #52606d;
+}
+
+.btn.danger,
+button.danger {
+    background: #b42318;
+}
+
+.btn.sm,
+button.sm {
+    padding: 3px 10px;
+    font-size: 0.85rem;
+}
+
+/* ---------- 6. Tabel ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #e4e7eb;
+    vertical-align: top;
+}
+
+th {
+    background: #f0f2f5;
+}
+
+.winner {
+    background: #fff8e1;
+}
+
+/* ---------- 7. Daftar label-nilai (dl) ---------- */
+dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 4px 16px;
+}
+
+dd {
+    margin: 0;
+}
+
+/* ---------- 8. Badge status ---------- */
+.badge {
+    padding: 2px 9px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    color: #fff;
+}
+
+.badge.open {
+    background: #1a7f37;
+}
+
+.badge.closed {
+    background: #6b7280;
+}
+
+.badge.win {
+    background: #b7791f;
+}
+
+/* ---------- 9. Pesan flash ---------- */
+.flash {
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 14px;
+}
+
+.flash.ok {
+    background: #d9f2e0;
+}
+
+.flash.err {
+    background: #fde2e0;
+}
+
+/* ---------- 10. Utilitas ---------- */
+.muted {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.row > * {
+    flex: 1;
+    min-width: 140px;
+}
+
+/* Sembunyikan secara visual, tapi tetap dibaca screen reader */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
