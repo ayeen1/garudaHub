@@ -69,4 +69,56 @@
         </table>
     @endif
 </section>
+@auth
+    @if (auth()->user()->role === 'developer')
+        @php($sudahBid = $project->bids->contains('developer_id', auth()->id()))
+
+        <section class="card" aria-labelledby="judul-ajukan">
+            <h2 id="judul-ajukan">Ajukan Penawaran</h2>
+
+            @if (! $project->isOpen())
+                <p class="muted">Lelang proyek ini sudah ditutup.</p>
+            @elseif ($sudahBid)
+                <p class="muted">Kamu sudah mengajukan penawaran untuk proyek ini.</p>
+            @else
+                <form method="POST" action="{{ route('bids.store', $project) }}" novalidate>
+                    @csrf
+
+                    <div class="row">
+                        <div>
+                            <label for="price">Harga (Rp)</label>
+                            <input type="number" id="price" name="price" value="{{ old('price') }}" min="1" step="100000" required>
+                            @error('price')
+                                <p class="flash err" role="alert">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <label for="duration_days">Durasi (hari)</label>
+                            <input type="number" id="duration_days" name="duration_days" value="{{ old('duration_days') }}" min="1" max="365" required>
+                            @error('duration_days')
+                                <p class="flash err" role="alert">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <label for="proposal">Proposal</label>
+                    <textarea id="proposal" name="proposal" maxlength="3000" required>{{ old('proposal') }}</textarea>
+                    @error('proposal')
+                        <p class="flash err" role="alert">{{ $message }}</p>
+                    @enderror
+
+                    <p><button type="submit">Kirim Penawaran</button></p>
+                </form>
+            @endif
+        </section>
+    @endif
+@endauth
+
+@guest
+    @if ($project->isOpen())
+        <section class="card">
+            <p><a href="{{ route('login') }}">Masuk</a> sebagai developer untuk mengajukan penawaran.</p>
+        </section>
+    @endif
+@endguest
 @endsection
