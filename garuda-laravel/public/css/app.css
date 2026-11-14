@@ -246,6 +246,32 @@ dd {
     min-width: 140px;
 }
 
+/* ---------- 11. Form login/register ---------- */
+fieldset {
+    border: 1px solid #c5ccd3;
+    border-radius: 6px;
+    margin: 14px 0 0;
+    padding: 6px 14px 10px;
+}
+
+legend {
+    font-weight: 600;
+    padding: 0 4px;
+}
+
+fieldset label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+    margin: 6px 0;
+}
+
+input[type="radio"] {
+    width: auto;
+    margin: 0;
+}
+
 /* Sembunyikan secara visual, tapi tetap dibaca screen reader */
 .sr-only {
     position: absolute;

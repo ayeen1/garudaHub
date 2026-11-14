@@ -10,9 +10,23 @@
 <header>
     <div class="in">
         <a class="brand" href="{{ route('projects.index') }}">Garuda-Hub</a>
-        <nav aria-label="Navigasi utama">
-            <a href="{{ route('projects.index') }}">Proyek</a>
-        </nav>
+            <nav aria-label="Navigasi utama">
+                <a href="{{ route('projects.index') }}">Proyek</a>
+                @auth
+                    <span>{{ auth()->user()->name }} ({{ auth()->user()->role }})</span>
+                    <form class="inline" method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button class="sm sec" type="submit">Keluar</button>
+                    </form>
+
+                @endauth
+
+                @guest
+                    <a href="{{ route('login') }}">Masuk</a>
+                    <a href="{{ route('register') }}">Daftar</a>
+                @endguest
+
+            </nav>
     </div>
 </header>
 
