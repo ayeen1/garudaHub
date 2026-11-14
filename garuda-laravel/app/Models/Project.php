@@ -46,4 +46,13 @@ class Project extends Model
     {
         return $this->status === 'open' && $this->deadline->gte(today());
     }
+
+    public function statusLabel(): string
+    {
+        return match (true) {
+            $this->status === 'awarded' => 'ada pemenang',
+            $this->isOpen() => 'terbuka',
+            default => 'ditutup',
+        };
+    }
 }
